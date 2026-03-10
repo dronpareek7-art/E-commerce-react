@@ -6,12 +6,21 @@ import { Cartcontext } from './Router';
 
 function Cartqty({product}) {
 
-   const {RemoveToCart} = useContext(Cartcontext)
+
+   const {RemoveToCart ,cart} = useContext(Cartcontext)
+
+   function getproductQuantity(product){
+     const productFound =   cart.find((cartItem)=>{
+        return cartItem.id === product.id
+       })
+       return productFound.quantity;
+
+   }
   return (
      <div className="minicart">
         <div className="cartqty">
           <button><FaPlus /></button>
-            <p></p>
+            <p>{getproductQuantity(product)}</p>
             <button><FaMinus /></button>
         </div>
        <MdOutlineRemoveShoppingCart  onClick={()=>RemoveToCart(product)} />

@@ -15,7 +15,9 @@ const Home = () => {
   const [cart, setCart] = useState([]);
 
   function addtocart(productToadd) {
-    setCart([...cart, productToadd]);
+    const productAddTocart = {...productToadd, quantity:1}
+    setCart([...cart, productAddTocart]);
+    console.log(productAddTocart)
   }
   console.log(cart);
 

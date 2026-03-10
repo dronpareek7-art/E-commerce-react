@@ -10,15 +10,20 @@ function SingleProduct() {
   }, [id]);
 
   async function singleitem() {
+
+    if(id>20){
+      setProduct(null);
+      return
+    }
     setLoading(true);
     const response = await fetch(`https://fakestoreapi.com/products/${id}`);
     const result = await response.json();
     setProduct(result);
-    console.log(result);
     setLoading(false);
   }
 
   if (loading) return <div className="Loadingicon">Loading...</div>;
+  if (!product) return <h1>404 Product Not Found</h1>;
 
 return (
   <div className="single-product-container">
