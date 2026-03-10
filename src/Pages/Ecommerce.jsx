@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Cartcontext } from "../component/Router";
-
+import Cartqty from "../component/Cartqty";
 function Ecommerce() {
   const [Data, setData] = useState([]);
   const [Loading, setLoading] = useState(false);
-  const {addtocart}=useContext(Cartcontext)
+  const { addtocart, isProductInCart } = useContext(Cartcontext);
 
   const navigate = useNavigate();
 
@@ -23,18 +23,24 @@ function Ecommerce() {
 
   if (Loading) return <div className="Loadingicon">Loading...</div>;
 
-
   return (
     <>
       <h1 className="products-heading">Products</h1>
       <div className="container">
         {Data.map((product) => {
           return (
-            <div key={product.id} >
-              <img src={product.image} alt="" width={150} onClick={()=>navigate(`/product/${product.id}`)}/>
+            <div key={product.id} className="product-card">
+              <img
+                src={product.image}
+                alt=""
+                width={150}
+                onClick={() => navigate(`/product/${product.id}`)}
+              />
               <h3>{product.title}</h3>
               <p>Price = ${product.price}</p>
-          <button onClick={()=>addtocart(product) }>Add to cart</button>
+              {isProductInCart(product) ? (<Cartqty  product={product}/>) : (
+                <button onClick={() => addtocart(product)}>Add to cart</button>
+              )}
             </div>
           );
         })}
