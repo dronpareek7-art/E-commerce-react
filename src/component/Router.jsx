@@ -4,20 +4,20 @@ import Ecommerce from "../Pages/Ecommerce";
 import { About } from "../Pages/About";
 import { Blog } from "../Pages/Blog";
 import { Login } from "../Pages/Login";
-import Cart  from "../Pages/Cart.jsx";
-import { Header } from "./Header";
+import Cart from "../Pages/Cart.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Footer } from "./Footer";
 import SingleProduct from "../Pages/SingleProduct.jsx";
+import Layout from "./Layout.jsx";
+
 export const Cartcontext = createContext(null);
 
 const Home = () => {
   const [cart, setCart] = useState([]);
 
   function addtocart(productToadd) {
-    const productAddTocart = {...productToadd, quantity:1}
+    const productAddTocart = { ...productToadd, quantity: 1 };
     setCart([...cart, productAddTocart]);
-    console.log(productAddTocart)
+    console.log(productAddTocart);
   }
   console.log(cart);
 
@@ -36,21 +36,51 @@ const Home = () => {
     );
   }
 
+function Increment(product) {
+  setCart(
+    cart.map((cartItem) => {
+      if (cartItem.id === product.id) {
+        return { ...cartItem, quantity: cartItem.quantity + 1 };
+      }
+      return cartItem;
+    })
+  );
+}
+function Decrement(product) {
+  setCart(
+    cart.map((cartItem) => {
+      if (cartItem.id === product.id && cartItem.quantity > 0) {
+        return { ...cartItem, quantity: cartItem.quantity - 1 };
+      }
+      return cartItem;
+    })
+  );
+}
+
+
   return (
     <BrowserRouter>
       <Cartcontext.Provider
-        value={{ cart, setCart, addtocart, isProductInCart , RemoveToCart}}
+        value={{
+          cart,
+          setCart,
+          addtocart,
+          isProductInCart,
+          RemoveToCart,
+          Increment,
+          Decrement,
+        }}
       >
-        <Header />
         <Routes>
-          <Route path="/" element={<Ecommerce />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/blog" element={<Blog />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/product/:id" element={<SingleProduct />}></Route>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Ecommerce />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/blog" element={<Blog />}></Route>
+            <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/product/:id" element={<SingleProduct />}></Route>
+          </Route>
         </Routes>
-        <Footer />
       </Cartcontext.Provider>
     </BrowserRouter>
   );

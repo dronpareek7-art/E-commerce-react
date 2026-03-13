@@ -38,9 +38,11 @@ function Ecommerce() {
               />
               <h3>{product.title}</h3>
               <p>Price = ${product.price}</p>
+
               {isProductInCart(product) ? (<Cartqty  product={product}/>) : (
-                <button onClick={() => addtocart(product)}>Add to cart</button>
+                <button onClick={() => addtocart(product)} className="add-cart-btn">Add to cart</button>
               )}
+
             </div>
           );
         })}

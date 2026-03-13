@@ -9,44 +9,57 @@ import { IoLogoTwitter } from "react-icons/io";
 export const Footer = () => {
   return (
     <footer className="footer">
+      <div className="footer-container">
+        <div className="links">
+          <h2>Quick Links</h2>
 
-    <div className="footer-container"> 
-
-
-      <div className="links">
-        <h2>Quick Links</h2>
-
-        <ul>
-          <li>About Us</li>
-          <li>Shop</li>
-          <li>Locate US</li>
-          <li>Contact</li>
-        </ul>
-      </div>
-      <div className="support">
-        <h2>Customer Support</h2>
-        <ul>
-          <li>FAQ</li>
-          <li>Shipping Info</li>
-          <li>Return Policy</li>
-          <li>Privacy Policy</li>
-        </ul>
-      </div>
-      <div className="contact">
-        <h2>Contact Us</h2>
-        <ul>
-          <li><FaLocationDot />jaipur, Rajasthan</li>
-          <li><LuPhoneCall />+91 9983736942</li>
-          <li><MdEmail />support@example.com</li>
-        </ul>
-      <div className="social">
-        <FaInstagram />
-        <FaFacebook />
-         <IoLogoTwitter />
-      </div>
-      </div>
+          <ul>
+            <li>About Us</li>
+            <li>Shop</li>
+            <li>Locate US</li>
+            <li>Contact</li>
+          </ul>
+        </div>
+        <div className="support">
+          <h2>Customer Support</h2>
+          <ul>
+            <li>FAQ</li>
+            <li>Shipping Info</li>
+            <li>Return Policy</li>
+            <li>Privacy Policy</li>
+          </ul>
+        </div>
+        <div className="contact">
+          <h2>Contact Us</h2>
+          <ul>
+            <li>
+              <FaLocationDot />
+              jaipur, Rajasthan
+            </li>
+            <li>
+              <LuPhoneCall />
+              +91 9983736942
+            </li>
+            <li>
+              <MdEmail />
+              support@example.com
+            </li>
+          </ul>
+          <div className="social">
+            <a href="https://instagram.com/dron_pareek" target="_blank">
+              <FaInstagram />
+            </a>
+            <FaFacebook />
+            <IoLogoTwitter />
           </div>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <p>
+          © 2026 E-Commerce. All Rights Reserved. Made with ❤ by{" "}
+          <span>Drona pareek</span>
+        </p>
+      </div>
     </footer>
-
   );
 };
