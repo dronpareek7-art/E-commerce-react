@@ -16,14 +16,14 @@ function Cartqty({ product }) {
   return (
     <div className="minicart">
       <div className="cartqty">
-        <button>
-          <FaPlus onClick={()=>Increment(product)}/>
+        <button onClick={()=>Increment(product)}>
+          <FaPlus />
         </button>
 
-        <p>{getproductQuantity(product)}</p>
+        <span className="qty">{getproductQuantity(product)}</span>
 
-        <button>
-          <FaMinus onClick={()=>Decrement(product)}/>
+        <button onClick={()=>Decrement(product)}>
+          <FaMinus />
         </button>
         <MdOutlineRemoveShoppingCart onClick={() => RemoveToCart(product)} />
       </div>

@@ -1,0 +1,71 @@
+/* Skeleton Card Container */
+.skeleton{
+padding:20px;
+border-radius:10px;
+background:#ffffff;
+box-shadow:0 2px 12px rgba(0,0,0,0.08);
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+}
+
+/* Skeleton Image */
+.skeleton-img{
+height:150px;
+width:150px;
+border-radius:8px;
+background:linear-gradient(
+90deg,
+#eeeeee 25%,
+#f5f5f5 37%,
+#eeeeee 63%
+);
+background-size:400% 100%;
+animation:shimmer 1.4s ease infinite;
+}
+
+/* Skeleton Text Lines */
+.skeleton-text{
+height:14px;
+width:90%;
+border-radius:6px;
+background:linear-gradient(
+90deg,
+#eeeeee 25%,
+#f5f5f5 37%,
+#eeeeee 63%
+);
+background-size:400% 100%;
+animation:shimmer 1.4s ease infinite;
+}
+
+/* Smaller text */
+.skeleton-text.small{
+width:60%;
+}
+
+/* Skeleton Button */
+.skeleton-btn{
+height:36px;
+width:80%;
+border-radius:8px;
+background:linear-gradient(
+90deg,
+#eeeeee 25%,
+#f5f5f5 37%,
+#eeeeee 63%
+);
+background-size:400% 100%;
+animation:shimmer 1.4s ease infinite;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer{
+0%{
+background-position:-400px 0;
+}
+100%{
+background-position:400px 0;
+}
+}

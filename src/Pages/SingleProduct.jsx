@@ -2,10 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Cartqty from "../component/Cartqty";
 import { Cartcontext } from "../component/Router";
+import SkeletonCard from "../component/SkeletonCard";
 function SingleProduct() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { addtocart, isProductInCart } = useContext(Cartcontext);
 
   useEffect(() => {
@@ -24,7 +25,21 @@ function SingleProduct() {
     setLoading(false);
   }
 
-  if (loading) return <div className="Loadingicon">Loading...</div>;
+
+  if (loading) {
+  return (
+    <>
+      <h1 className="products-heading">Products</h1>
+      <div className="container">
+        {Array(8)
+          .fill("")
+          .map((_, index) => (
+            <SkeletonCard key={index} />
+          ))}
+      </div>
+    </>
+  );
+}
   if (!product) return <h1>404 Product Not Found</h1>;
 
   return (

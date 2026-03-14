@@ -2,9 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Cartcontext } from "../component/Router";
 import Cartqty from "../component/Cartqty";
+import { FaShoppingCart } from "react-icons/fa";
+import SkeletonCard from "../component/SkeletonCard";
+
 function Ecommerce() {
   const [Data, setData] = useState([]);
-  const [Loading, setLoading] = useState(false);
+  const [Loading, setLoading] = useState(true);
   const { addtocart, isProductInCart } = useContext(Cartcontext);
 
   const navigate = useNavigate();
@@ -21,7 +24,20 @@ function Ecommerce() {
     setLoading(false);
   }
 
-  if (Loading) return <div className="Loadingicon">Loading...</div>;
+  if (Loading) {
+  return (
+    <>
+      <h1 className="products-heading">Products</h1>
+      <div className="container">
+        {Array(8)
+          .fill("")
+          .map((_, index) => (
+            <SkeletonCard key={index} />
+          ))}
+      </div>
+    </>
+  );
+}
 
   return (
     <>
@@ -40,7 +56,7 @@ function Ecommerce() {
               <p>Price = ${product.price}</p>
 
               {isProductInCart(product) ? (<Cartqty  product={product}/>) : (
-                <button onClick={() => addtocart(product)} className="add-cart-btn">Add to cart</button>
+                <button onClick={() => addtocart(product)} className="add-cart-btn">Add to cart <FaShoppingCart /></button>
               )}
 
             </div>
