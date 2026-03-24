@@ -5,7 +5,7 @@ import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { Cartcontext } from "./Router";
 
 function Cartqty({ product }) {
-  const { RemoveToCart, cart ,Increment,Decrement} = useContext(Cartcontext);
+  const { RemoveToCart, cart, Increment, Decrement } = useContext(Cartcontext);
 
   function getproductQuantity(product) {
     const productFound = cart.find((cartItem) => {
@@ -16,13 +16,13 @@ function Cartqty({ product }) {
   return (
     <div className="minicart">
       <div className="cartqty">
-        <button onClick={()=>Increment(product)}>
+        <button onClick={() => Increment(product)}>
           <FaPlus />
         </button>
 
         <span className="qty">{getproductQuantity(product)}</span>
 
-        <button onClick={()=>Decrement(product)}>
+        <button onClick={() => Decrement(product)}>
           <FaMinus />
         </button>
         <MdOutlineRemoveShoppingCart onClick={() => RemoveToCart(product)} />

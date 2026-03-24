@@ -25,19 +25,19 @@ function Ecommerce() {
   }
 
   if (Loading) {
-  return (
-    <>
-      <h1 className="products-heading">Products</h1>
-      <div className="container">
-        {Array(8)
-          .fill("")
-          .map((_, index) => (
-            <SkeletonCard key={index} />
-          ))}
-      </div>
-    </>
-  );
-}
+    return (
+      <>
+        <h1 className="products-heading">Products</h1>
+        <div className="container">
+          {Array(8)
+            .fill("")
+            .map((_, index) => (
+              <SkeletonCard key={index} />
+            ))}
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -53,12 +53,18 @@ function Ecommerce() {
                 onClick={() => navigate(`/product/${product.id}`)}
               />
               <h3>{product.title}</h3>
-              <p>Price = ${product.price}</p>
+              <p>Price = ₹{product.price}</p>
 
-              {isProductInCart(product) ? (<Cartqty  product={product}/>) : (
-                <button onClick={() => addtocart(product)} className="add-cart-btn">Add to cart <FaShoppingCart /></button>
+              {isProductInCart(product) ? (
+                <Cartqty product={product} />
+              ) : (
+                <button
+                  onClick={() => addtocart(product)}
+                  className="add-cart-btn"
+                >
+                  Add to cart <FaShoppingCart />
+                </button>
               )}
-
             </div>
           );
         })}

@@ -25,21 +25,20 @@ function SingleProduct() {
     setLoading(false);
   }
 
-
   if (loading) {
-  return (
-    <>
-      <h1 className="products-heading">Products</h1>
-      <div className="container">
-        {Array(8)
-          .fill("")
-          .map((_, index) => (
-            <SkeletonCard key={index} />
-          ))}
-      </div>
-    </>
-  );
-}
+    return (
+      <>
+        <h1 className="products-heading">Products</h1>
+        <div className="container">
+          {Array(8)
+            .fill("")
+            .map((_, index) => (
+              <SkeletonCard key={index} />
+            ))}
+        </div>
+      </>
+    );
+  }
   if (!product) return <h1>404 Product Not Found</h1>;
 
   return (
@@ -51,7 +50,7 @@ function SingleProduct() {
       <div className="product-details">
         <h2>{product.title}</h2>
         <p>{product.description}</p>
-        <h3 className="product-price">Price: ${product.price}</h3>
+        <h3 className="product-price">Price: ₹{product.price}</h3>
 
         {isProductInCart(product) ? (
           <Cartqty product={product} />

@@ -8,6 +8,7 @@ import Cart from "../Pages/Cart.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SingleProduct from "../Pages/SingleProduct.jsx";
 import Layout from "./Layout.jsx";
+import NotFound from "../Pages/Notfound.jsx";
 
 export const Cartcontext = createContext(null);
 
@@ -36,27 +37,26 @@ const Home = () => {
     );
   }
 
-function Increment(product) {
-  setCart(
-    cart.map((cartItem) => {
-      if (cartItem.id === product.id) {
-        return { ...cartItem, quantity: cartItem.quantity + 1 };
-      }
-      return cartItem;
-    })
-  );
-}
-function Decrement(product) {
-  setCart(
-    cart.map((cartItem) => {
-      if (cartItem.id === product.id && cartItem.quantity > 0) {
-        return { ...cartItem, quantity: cartItem.quantity - 1 };
-      }
-      return cartItem;
-    })
-  );
-}
-
+  function Increment(product) {
+    setCart(
+      cart.map((cartItem) => {
+        if (cartItem.id === product.id) {
+          return { ...cartItem, quantity: cartItem.quantity + 1 };
+        }
+        return cartItem;
+      }),
+    );
+  }
+  function Decrement(product) {
+    setCart(
+      cart.map((cartItem) => {
+        if (cartItem.id === product.id && cartItem.quantity > 0) {
+          return { ...cartItem, quantity: cartItem.quantity - 1 };
+        }
+        return cartItem;
+      }),
+    );
+  }
 
   return (
     <BrowserRouter>
@@ -79,6 +79,7 @@ function Decrement(product) {
             <Route path="/blog" element={<Blog />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/product/:id" element={<SingleProduct />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
           </Route>
         </Routes>
       </Cartcontext.Provider>
