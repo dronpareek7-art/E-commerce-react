@@ -7,7 +7,8 @@ function SingleProduct() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { addtocart, isProductInCart } = useContext(Cartcontext);
+  const { addtocart, isProductInCart, convert, Currency } =
+    useContext(Cartcontext);
 
   useEffect(() => {
     singleitem();
@@ -50,7 +51,11 @@ function SingleProduct() {
       <div className="product-details">
         <h2>{product.title}</h2>
         <p>{product.description}</p>
-        <h3 className="product-price">Price: ₹{product.price}</h3>
+        
+        <h3 className="product-price">
+          Price: {Currency === "INR" ? "₹" : "$"}
+          {convert(product.price)}
+        </h3>
 
         {isProductInCart(product) ? (
           <Cartqty product={product} />

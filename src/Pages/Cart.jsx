@@ -5,7 +5,7 @@ import Cartqty from "../component/Cartqty";
 import "../Pages/Cart.css";
 import { useState } from "react";
 function Cart() {
-  const { cart } = useContext(Cartcontext);
+  const { cart ,Currency , convert } = useContext(Cartcontext);
 
   const [CartTotal, setCartTotal] = useState(0);
   const [deliveryFees, setDeliveryFess] = useState(0);
@@ -31,7 +31,10 @@ function Cart() {
                   </div>
                   <div className="cart-info">
                     <h3>{item.title}</h3>
-                    <h5> Price :₹{item.price}</h5>
+                    <h5>
+                      Price: {Currency === "INR" ? "₹" : "$"}
+                      {convert(item.price)}
+                    </h5>
                   </div>
                   <div className="cart-right">
                     <Cartqty product={item} />
@@ -46,7 +49,7 @@ function Cart() {
           <ul>
             <li>
               <span>Bag Total:</span>
-              <span>₹{CartTotal}</span>
+              <span>${CartTotal}</span>
             </li>
             <li>
               <span>Delivery Charges:</span>
@@ -58,7 +61,7 @@ function Cart() {
             <span>Your Total</span>
 
             <span>
-              ₹{(Number(CartTotal) + Number(deliveryFees)).toFixed(2)}
+              ${(Number(CartTotal) + Number(deliveryFees)).toFixed(2)}
             </span>
           </h4>
           <button className="checkout-btn">Proceed to Checkout</button>

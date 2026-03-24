@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 body {
   background: #f4f6fb;
   color: #333;
@@ -83,6 +84,33 @@ body {
   width: 100%;
 }
 
+.nav-links select {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.nav-links select:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #38bdf8;
+}
+
+.nav-links select:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.6);
+}
+
+.nav-links select option {
+  color: #000;
+  background: #fff;
+}
 /* ================= PRODUCTS ================= */
 
 .products-heading {

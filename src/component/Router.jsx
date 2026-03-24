@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 import Ecommerce from "../Pages/Ecommerce";
 import { About } from "../Pages/About";
@@ -8,11 +8,35 @@ import Cart from "../Pages/Cart.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SingleProduct from "../Pages/SingleProduct.jsx";
 import Layout from "./Layout.jsx";
-import NotFound from "../Pages/Notfound.jsx"
+import NotFound from "../Pages/Notfound.jsx";
 export const Cartcontext = createContext(null);
 
 const Home = () => {
   const [cart, setCart] = useState([]);
+  const [Currency, setCurrency] = useState("USD");
+  const [Rate, setRates] = useState(1);
+
+  useEffect(() => {
+    Fetchrates();
+  }, []);
+
+  async function Fetchrates() {
+    let response = await fetch(
+      "https://v6.exchangerate-api.com/v6/e928549c3a8e6ff1d81c0d0b/latest/USD",
+    );
+
+    let data = await response.json();
+    setRates(data.conversion_rates.INR);
+
+    console.log(data);
+  }
+
+  function convert(price) {
+    if (Currency === "INR") {
+      return (price * Rate).toFixed(2);
+    }
+    return price.toFixed(2);
+  }
 
   function addtocart(productToadd) {
     const productAddTocart = { ...productToadd, quantity: 1 };
@@ -68,6 +92,9 @@ const Home = () => {
           RemoveToCart,
           Increment,
           Decrement,
+          Currency,
+          setCurrency,
+          convert,
         }}
       >
         <Routes>

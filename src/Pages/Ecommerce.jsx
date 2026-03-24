@@ -8,7 +8,7 @@ import SkeletonCard from "../component/SkeletonCard";
 function Ecommerce() {
   const [Data, setData] = useState([]);
   const [Loading, setLoading] = useState(true);
-  const { addtocart, isProductInCart } = useContext(Cartcontext);
+  const { addtocart, isProductInCart ,Currency , convert } = useContext(Cartcontext);
 
   const navigate = useNavigate();
 
@@ -53,7 +53,10 @@ function Ecommerce() {
                 onClick={() => navigate(`/product/${product.id}`)}
               />
               <h3>{product.title}</h3>
-              <p>Price = ₹{product.price}</p>
+              <p>
+                Price: {Currency === "INR" ? "₹" : "$"}
+                {convert(product.price)}
+              </p>
 
               {isProductInCart(product) ? (
                 <Cartqty product={product} />
