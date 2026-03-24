@@ -8,7 +8,7 @@ import Cart from "../Pages/Cart.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SingleProduct from "../Pages/SingleProduct.jsx";
 import Layout from "./Layout.jsx";
-import NotFound from "../Pages/NotFound.jsx"
+import NotFound from "../Pages/Notfound.jsx"
 export const Cartcontext = createContext(null);
 
 const Home = () => {
