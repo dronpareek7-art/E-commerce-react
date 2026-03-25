@@ -3,7 +3,7 @@ import { Cartcontext } from "./Router";
 import { Link } from "react-router-dom";
 import { IoLogIn } from "react-icons/io5";
 export const Header = () => {
-  const { cart , Currency,setCurrency} = useContext(Cartcontext);
+  const { cart, Currency, setCurrency } = useContext(Cartcontext);
   return (
     <nav className="navbar">
       <Link to="/" className="logo">
@@ -14,7 +14,12 @@ export const Header = () => {
       </Link>
       <ul className="nav-links">
         <li>
-          <select name="" id="" value={Currency} onChange={(e)=>setCurrency(e.target.value)}>
+          <select
+            name=""
+            id=""
+            value={Currency}
+            onChange={(e) => setCurrency(e.target.value)}
+          >
             <option value="USD">$ USD</option>
             <option value="INR">₹ INR</option>
           </select>

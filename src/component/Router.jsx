@@ -3,12 +3,13 @@ import React, { createContext, useState, useEffect } from "react";
 import Ecommerce from "../Pages/Ecommerce";
 import { About } from "../Pages/About";
 import { Blog } from "../Pages/Blog";
-import { Login } from "../Pages/Login";
+import Login  from "../Pages/Login";
 import Cart from "../Pages/Cart.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SingleProduct from "../Pages/SingleProduct.jsx";
 import Layout from "./Layout.jsx";
 import NotFound from "../Pages/Notfound.jsx";
+
 export const Cartcontext = createContext(null);
 
 const Home = () => {
@@ -35,7 +36,7 @@ const Home = () => {
     if (Currency === "INR") {
       return (price * Rate).toFixed(2);
     }
-    return price.toFixed(2);
+    return price;
   }
 
   function addtocart(productToadd) {
@@ -73,11 +74,11 @@ const Home = () => {
   function Decrement(product) {
     setCart(
       cart.map((cartItem) => {
-        if (cartItem.id === product.id && cartItem.quantity > 0) {
+        if (cartItem.id === product.id) {
           return { ...cartItem, quantity: cartItem.quantity - 1 };
         }
         return cartItem;
-      }),
+      }).filter((cartItem)=>cartItem.quantity>0)
     );
   }
 

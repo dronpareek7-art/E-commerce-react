@@ -1,10 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
+import "./Login.css";
 
-export const Login = () => {
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    console.log("Login Data:", { email, password });
+    alert("Login Successful");
+  };
+
   return (
-    <div>
-      <h2>🚀 Something Awesome is Coming!</h2>
-      <p>Login feature is under construction. We'll launch it very soon.</p>
+    <div className="login-container">
+      <div className="login-box">
+        <h2>Login to Your Account</h2>
+
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label>Email</label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className="input-group">
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <button type="submit" className="login-btn">
+            Login
+          </button>
+        </form>
+
+        <p className="signup-text">
+          Don't have an account? <span>Sign up</span>
+        </p>
+      </div>
     </div>
   );
 };
+
+export default Login;

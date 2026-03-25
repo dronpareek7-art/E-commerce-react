@@ -8,7 +8,8 @@ import SkeletonCard from "../component/SkeletonCard";
 function Ecommerce() {
   const [Data, setData] = useState([]);
   const [Loading, setLoading] = useState(true);
-  const { addtocart, isProductInCart ,Currency , convert } = useContext(Cartcontext);
+  const { addtocart, isProductInCart, Currency, convert } =
+    useContext(Cartcontext);
 
   const navigate = useNavigate();
 

@@ -25,7 +25,7 @@ function Cartqty({ product }) {
         <button onClick={() => Decrement(product)}>
           <FaMinus />
         </button>
-        <MdOutlineRemoveShoppingCart onClick={() => RemoveToCart(product)} />
+        <MdOutlineRemoveShoppingCart onClick={() => RemoveToCart(product)} className="removeicon"/>
       </div>
     </div>
   );

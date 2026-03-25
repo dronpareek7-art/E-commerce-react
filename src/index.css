@@ -225,7 +225,9 @@ body {
   padding: 6px 14px;
   border-radius: 8px;
 }
-
+.removeicon {
+  font-size: 25px;
+}
 /* ================= SINGLE PRODUCT ================= */
 
 .single-product-container {
@@ -580,6 +582,9 @@ body {
 
   .footer-bottom {
     font-size: 13px;
+  }
+  .removeicon {
+    font-size: 50px;
   }
 }
 
