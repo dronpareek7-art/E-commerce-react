@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SingleProduct from "../Pages/SingleProduct.jsx";
 import Layout from "./Layout.jsx";
 import NotFound from "../Pages/Notfound.jsx";
+import ScrollToTop from "./ScrollToTop.jsx";
 
 export const Cartcontext = createContext(null);
 
@@ -98,6 +99,7 @@ const Home = () => {
           convert,
         }}
       >
+      <ScrollToTop/>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Ecommerce />}></Route>

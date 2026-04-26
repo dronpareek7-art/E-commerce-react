@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { Cartcontext } from "../component/Router";
 import Cartqty from "../component/Cartqty";
+import { useNavigate } from "react-router-dom";
+
 import "../Pages/Cart.css";
 import { useState } from "react";
 function Cart() {
@@ -9,6 +11,8 @@ function Cart() {
 
   const [CartTotal, setCartTotal] = useState(0);
   const [deliveryFees, setDeliveryFess] = useState(0);
+    const navigate = useNavigate();
+  
 
   useEffect(() => {
     let total = 0;
@@ -27,7 +31,8 @@ function Cart() {
               return (
                 <div className="cartitem" key={item.id}>
                   <div className="cart-left">
-                    <img src={item.image} alt="" />
+                    <img src={item.image} alt="" 
+                    onClick={() => navigate(`/product/${item.id}`)}/>
                   </div>
                   <div className="cart-info">
                     <h3>{item.title}</h3>
